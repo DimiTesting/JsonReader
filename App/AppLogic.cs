@@ -1,36 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
-using JsonReader.App;
-using JsonReader.FileWork;
-using JsonReader.SaveError;
-
-namespace JsonReader
+namespace JsonReader.App
 {
-    public class Program
+    public class AppLogic
     {
-        public static void Main(string[] args)
+        public WorkWithFiles _workWithFiles;
+        public Logger _logger; 
+
+        public AppLogic(WorkWithFiles workWithFiles, Logger logger)
         {
-            /*while(true)
+            workWithFiles = _workWithFiles;
+            logger = _logger;
+        }
+
+        public void Run()
+        {
+            while(true)
             {
                 Console.WriteLine("Enter the name of the file you want to read? ");
                 var userInput = Console.ReadLine();
 
                 if(userInput == "games.json" || userInput == "gamesInvalidFormat.json")
                 {
-                    WorkWithFiles test = new WorkWithFiles(userInput);
                     try
                     {
-                        test.ReadFile(); 
+                        _workWithFiles.ReadFile(userInput);
                         Console.WriteLine("File does not contain any error. Press any key to exit the program");
                         Console.ReadLine();
                         
                     }
-                    catch(Exception err)
+                    catch(JsonException err)
                     {
-                        test.LogError(err);
+                        _logger.LogError(err);
                         Console.WriteLine("File contains an error: " + err.Message);
                         Console.WriteLine("Please take a look into Log.txt file to review the Stack trace")
                         Console.WriteLine("Press any key to exit the program");
@@ -49,18 +48,6 @@ namespace JsonReader
                 else {
                     Console.WriteLine("File cannot be found");
                 }
-            }*/
-            try
-            {
-                WorkWithFiles workWithFiles = new WorkWithFiles();
-                AppLogic app = new AppLogic();
-
-            }
-            catch(Exception err)
-            {
-                Console.WriteLine($"Unexpected error occured: {err.Message}");
-                Console.WriteLine("Please type anything to exit from the app");
-                Console.ReadLine();
             }
         }
     }

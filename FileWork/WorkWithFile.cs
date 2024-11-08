@@ -5,17 +5,10 @@ namespace JsonReader.FileWork
 {
     public class WorkWithFiles
     {
-        public string FileName{get; }
         public string Path{get; } = @"C:\Users\amankeldi.kurban\Desktop\C#\JsonReader\Log.txt";
-
-        public WorkWithFiles(string fileName)
+        public bool ReadFile(string filename)
         {
-            FileName = fileName;
-        }
-
-        public bool ReadFile()
-        {
-            using (StreamReader r = new StreamReader(FileName))
+            using (StreamReader r = new StreamReader(filename))
             {
                 string json = r.ReadToEnd();
                 dynamic array = JsonConvert.DeserializeObject(json);
@@ -26,19 +19,5 @@ namespace JsonReader.FileWork
             }
             return false;
         }
-
-        public void LogError(Exception error)
-        {
-            string text = "" + $"{DateTime.Now}\n" + error.StackTrace +"\n"; 
-            string createText = $"{text}" + Environment.NewLine;
-
-            File.AppendAllText(Path, createText);
-        }
-
-        /*public void ConvertJsonToTxt(string invalidFileInput)
-        {
-            var workbook = new Workbook(invalidFileInput);
-            workbook.Save("Output.txt");
-        }*/
     }
 }
