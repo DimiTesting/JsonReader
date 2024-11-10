@@ -1,19 +1,19 @@
-using JsonReader.FileWork;
-using JsonReader.SaveError;
+using System;
 using System.Text.Json;
-
+using JsonReader.WorkWithFile;
+using JsonReader.SaveError;
 
 namespace JsonReader.App
 {
     public class AppLogic
     {
-        public WorkWithFiles _workWithFiles;
-        public Logger _logger; 
+        private readonly ReadJsonFile _readJsonFile;
+        private readonly Logger _logger; 
 
-        public AppLogic(WorkWithFiles workWithFiles, Logger logger)
+        public AppLogic(ReadJsonFile readJsonFile, Logger logger)
         {
-            workWithFiles = _workWithFiles;
-            logger = _logger;
+            _readJsonFile = readJsonFile;
+            _logger = logger;
         }
 
         public void Run()
@@ -27,7 +27,7 @@ namespace JsonReader.App
                 {
                     try
                     {
-                        _workWithFiles.ReadFile(userInput);
+                        _readJsonFile.ReadFile(userInput);
                         Console.WriteLine("File does not contain any error. Press any key to exit the program");
                         Console.ReadLine();
                         

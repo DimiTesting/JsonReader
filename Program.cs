@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
 using JsonReader.App;
-using JsonReader.FileWork;
+using JsonReader.WorkWithFile;
 using JsonReader.SaveError;
 
 namespace JsonReader
@@ -15,9 +11,9 @@ namespace JsonReader
         {
             try
             {
-                WorkWithFiles workWithFiles = new WorkWithFiles();
+                ReadJsonFile readJsonFile = new ReadJsonFile();
                 Logger logger = new Logger();
-                AppLogic app = new AppLogic(workWithFiles, logger);
+                AppLogic app = new AppLogic(readJsonFile, logger);
                 app.Run();
 
             }

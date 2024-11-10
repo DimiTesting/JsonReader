@@ -6,7 +6,7 @@ namespace JsonReader.SaveError
     {
         private string Path {get; } = @"C:\Users\amankeldi.kurban\Desktop\C#\JsonReader\Log.txt";
 
-        public void LogError(JsonException err)
+        public void LogError(JsonException err )
         {
             string text = "" + $"{DateTime.Now}\n" + err.StackTrace +"\n"; 
             string createText = $"{text}" + Environment.NewLine;

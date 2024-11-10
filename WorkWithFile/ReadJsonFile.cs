@@ -1,11 +1,10 @@
+using System;
 using Newtonsoft.Json;
-using Aspose.Cells; 
 
-namespace JsonReader.FileWork
+namespace JsonReader.WorkWithFile
 {
-    public class WorkWithFiles
+    public class ReadJsonFile
     {
-        public string Path{get; } = @"C:\Users\amankeldi.kurban\Desktop\C#\JsonReader\Log.txt";
         public bool ReadFile(string filename)
         {
             using (StreamReader r = new StreamReader(filename))
