@@ -1,3 +1,8 @@
+using JsonReader.FileWork;
+using JsonReader.SaveError;
+using System.Text.Json;
+
+
 namespace JsonReader.App
 {
     public class AppLogic
@@ -31,7 +36,7 @@ namespace JsonReader.App
                     {
                         _logger.LogError(err);
                         Console.WriteLine("File contains an error: " + err.Message);
-                        Console.WriteLine("Please take a look into Log.txt file to review the Stack trace")
+                        Console.WriteLine("Please take a look into Log.txt file to review the Stack trace");
                         Console.WriteLine("Press any key to exit the program");
                         Console.ReadLine();
                     }
